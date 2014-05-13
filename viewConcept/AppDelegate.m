@@ -12,8 +12,42 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+   
+     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+     // Override point for customization after application launch.
+    
+    self.window.rootViewController=[UIViewController new];
+    
+    
+
+    UIView* mainview = self.window.rootViewController.view;
+    
+    
+    UIView* v = [[UIView alloc] initWithFrame:CGRectMake(1, 100, 100, 115)];
+    
+    UIView* v2 = [[UIView alloc] initWithFrame:CGRectMake(v.bounds.size.width+20,100, 100, 115)];
+    
+    
+    UIView* v3  = [[UIView alloc] initWithFrame:CGRectMake(v2.bounds.size.width+20, 100, 100,115)];
+    CGRectInset(v2.bounds, 15, 15);
+    
+    v.backgroundColor=[UIColor orangeColor];
+    v2.backgroundColor=[UIColor whiteColor];
+    v3.backgroundColor=[UIColor greenColor];
+    v2.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    v3.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin ;
+    
+    
+    mainview.backgroundColor=[UIColor blueColor];
+    [mainview addSubview:v];
+   [v  addSubview:v2];
+    [v2  addSubview:v3];
+    
+    CGRect r= v2.bounds;
+    r.size.height += 40;
+    r.size.width -= 50;
+    v.bounds = r;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
